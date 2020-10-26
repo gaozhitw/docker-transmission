@@ -1,1 +1,1 @@
-Transmission 3.00+ without GTK base on lsiobase alpine x86-64
+Transmission 3.00+ base on lsiobase alpine x86-64

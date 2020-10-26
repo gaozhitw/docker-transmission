@@ -1,12 +1,14 @@
 FROM lsiobase/alpine:3.12 as builder
 
 RUN \
-    apk add --no-cache curl-dev intltool libevent-dev libnotify-dev openssl-dev git autoconf automake libtool build-base && \
+    apk add --no-cache curl-dev intltool libevent-dev libnotify-dev openssl-dev git autoconf automake libtool build-base cmake && \
     git clone https://github.com/transmission/transmission && \
     cd transmission && \
     git submodule update --init && \
-    ./autogen.sh --without-gtk && \
-    make -s && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
     make install
 
 FROM lsiobase/alpine:3.12 as final
